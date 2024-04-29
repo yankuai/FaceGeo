@@ -1,0 +1,8 @@
+torch
+torchvision
+matplotlib==3.7.1
+numpy==1.25.2
+munch==4.0.0
+pyfacer==0.0.4
+timm==0.9.16
+einops==0.8.0
