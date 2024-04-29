@@ -15,13 +15,15 @@
 
 🔔 We only release the code for inference. Colab Tutorial: click (here)[].
 
-## Environment
+### Environment
 ```sh
 pip install -r requirements.txt
 ```
 ### Inference
-- Inference on a folder of multiple indivisuals' face images.
-The data should be aranged as the following structure.
+Inference on a folder of multiple indivisuals' face images.
+
+- The data should be arranged into the following structure.
+
 ```sh
 input/
 ├── subject_1
@@ -35,11 +37,12 @@ input/
       └── view_k.png
 ```
 
-    Download the pre-trained (weights)[] into base folder and rename it as `model.pt`.
+- Download the pre-trained (weights)[] into base folder and rename it as `model.pt`.
 
-    Then modify the config file `conf/inference.yaml`.
+- Then modify the config file `conf/inference.yaml`.
 
-    Run the command:
+- Run the command:
+
 ```sh
 python inference.py
 ```
