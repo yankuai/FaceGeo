@@ -1,5 +1,5 @@
 device: cuda
-out_dir: "output"
+out_dir: "/content/output"
 
 augment:
   normalize:
@@ -9,14 +9,14 @@ augment:
     size: 256
 
 data:
-  data_dir: "input"
+  data_dir: "/content/FaceGeo/input"
   batch_size: 2
   views: 6
 
 prior_path: "data"
 
 model:
-  checkpoint: "best.model"
+  checkpoint: "/content/FaceGeo/model.pt"
   encoder:
     feat_dim: 128
     output_size: 16

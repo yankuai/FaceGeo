@@ -54,8 +54,12 @@ def main(config):
     return
 
 if __name__ == "__main__":
-    config_path = 'conf/inference.yaml'
-    config = load_config(config_path)
-    
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('config_path')
+    args = parser.parse_args()
+    config = load_config(args.config_path)
+
     main(config)
     exit(0)

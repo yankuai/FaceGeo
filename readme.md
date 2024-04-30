@@ -13,7 +13,7 @@
 - Fuser: Transformer decoder
 - Decoder: UNet
 
-🔔 We only release the code for inference. Colab Tutorial: click (here)[].
+🔔 We only release the code for inference. Colab Tutorial: click (here)[https://colab.research.google.com/github/yankuai/FaceGeo/blob/main/FaceGeo-reconstruct-face-geometry-with-cross-attention.ipynb].
 
 ### Environment
 ```sh
@@ -37,7 +37,7 @@ input/
       └── view_k.png
 ```
 
-- Download the pre-trained (weights)[] into base folder and rename it as `model.pt`.
+- Download the pre-trained (weights)[https://github.com/yankuai/FaceGeo/releases/download/v1.0.0/model.pt] into base folder and rename it as `model.pt`.
 
 - Then modify the config file `conf/inference.yaml`.
 
