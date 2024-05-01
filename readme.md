@@ -4,7 +4,7 @@
 
     💁 If you have less than 6 images, the model can also work, but the accuracy can be low.
 
-    💁 The input images should include {front, left, right, up, bottom} views of the face for the best accuracy. You don't need to provide their camera poses or always use fixed camera poses.
+    💁 The input images should include {front, left, right, up, bottom} views of the face for the best accuracy. You neither need to provide their camera poses nor always use fixed camera poses.
 - Output: A face mesh saved as an OBJ file.
 
 
@@ -13,10 +13,12 @@
 - Fuser: Transformer decoder
 - Decoder: UNet
 
-🔔 We only release the code for inference. Colab Tutorial: click (here)[https://colab.research.google.com/github/yankuai/FaceGeo/blob/main/FaceGeo-reconstruct-face-geometry-with-cross-attention.ipynb].
+🔔 We only release the code for inference. Colab Tutorial: click [here](https://colab.research.google.com/github/yankuai/FaceGeo/blob/main/FaceGeo-reconstruct-face-geometry-with-cross-attention.ipynb).
 
 ### Environment
 ```sh
+git clone https://github.com/yankuai/FaceGeo.git
+cd FaceGeo
 pip install -r requirements.txt
 ```
 ### Inference
@@ -37,12 +39,12 @@ input/
       └── view_k.png
 ```
 
-- Download the pre-trained (weights)[https://github.com/yankuai/FaceGeo/releases/download/v1.0.0/model.pt] into base folder and rename it as `model.pt`.
+- Download the pre-trained [weights](https://github.com/yankuai/FaceGeo/releases/download/v1.0.0/model.pt) into base folder and rename it as `model.pt`.
 
-- Then modify the config file `conf/inference.yaml`.
+- Then modify the `home_dir`, `out_dir`, `data_dir`, and `checkpoint` in the config file `conf/inference.yaml`.
 
 - Run the command:
 
 ```sh
-python inference.py
+python inference.py conf/inference.yaml
 ```

@@ -1,4 +1,5 @@
 device: cuda
+home_dir: "/content/FaceGeo"
 out_dir: "/content/output"
 
 augment:
@@ -12,8 +13,6 @@ data:
   data_dir: "/content/FaceGeo/input"
   batch_size: 2
   views: 6
-
-prior_path: "data"
 
 model:
   checkpoint: "/content/FaceGeo/model.pt"

@@ -2,7 +2,7 @@ import os
 import torch
 import numpy as np
 
-from utils.general import load_config 
+from utils.general import load_config
 from utils.mesh import load_priors, pos_map_to_vertex, save_obj
 from dataset.subject_dataset import get_dataloader
 from model.detr_model import DETRModel
@@ -23,7 +23,7 @@ def eval(config, out_dir, dataloader, model, uv_prior, can_pos_map, pos_mask, fa
         for sample in dataloader:
             batch = Batch(sample, uv_prior=uv_prior, can_pos_map=can_pos_map, device=config.device)
 
-            pos_map = model(batch)
+            pos_map = model(batch).cpu()
             pos_map = pos_map * pos_mask
 
             # covnert pos map to verts
@@ -35,8 +35,7 @@ def eval(config, out_dir, dataloader, model, uv_prior, can_pos_map, pos_mask, fa
                 save_obj(save_path, pred_verts[i].detach().cpu().numpy(), faces)
 
 def main(config):
-    data_dir = config.data.data_dir
-    dataloader = get_dataloader(config, data_dir)
+    dataloader = get_dataloader(config, config.data.data_dir)
     print(f"Inference on {len(dataloader.dataset)} subjects.")
 
     model = DETRModel(config).to(config.device)
@@ -45,7 +44,8 @@ def main(config):
     state_dict = torch.load(checkpoint_path, map_location=config.device)
     model.load_state_dict(state_dict)
 
-    faces, pos_mask, can_pos_map, uv_prior, uv_map = load_priors(config.prior_path)
+    prior_dir = os.path.join(config.home_dir, "data")
+    faces, pos_mask, can_pos_map, uv_prior, uv_map = load_priors(prior_dir)
 
     out_dir = config.out_dir
     os.makedirs(out_dir, exist_ok=True)
@@ -59,6 +59,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('config_path')
     args = parser.parse_args()
+
     config = load_config(args.config_path)
 
     main(config)
