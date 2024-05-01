@@ -7,7 +7,7 @@
     💁 The input images should include {front, left, right, up, bottom} views of the face for the best accuracy. You neither need to provide their camera poses nor always use fixed camera poses.
 - Output: A face mesh saved as an OBJ file.
 
-
+![network_architecture](data/network.png)
 🚀 The network has an encoder-fuser-decoder architecture.
 - Encoder: Resnet18
 - Fuser: Transformer decoder
