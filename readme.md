@@ -1,19 +1,24 @@
 ## FaceGeo
-👶 This project builds a model to reconstruct an indivisual's face geometry given 6 portrait images captured from different views.
-- Input: 6 multi-view images of the face. 
+This project develops a model to reconstruct an individual's facial geometry using six portrait images captured from different viewpoints.
+### Input
+- Required: Six multi-view images of the face.
+- Optional: The model can still function with fewer than six images, though accuracy may decrease.
+- For Best Results: Include images from the following angles: front, left, right, up, and bottom.
+  
+💁  Note: You do not need to provide camera poses, nor is it necessary to use fixed camera positions.
 
-    💁 If you have less than 6 images, the model can also work, but the accuracy can be low.
+### Output
+- The output is a face mesh, which is saved in OBJ file format.
 
-    💁 The input images should include {front, left, right, up, bottom} views of the face for the best accuracy. You neither need to provide their camera poses nor always use fixed camera poses.
-- Output: A face mesh saved as an OBJ file.
-
+### Network Architecture
 ![network_architecture](data/network.png)
-🚀 The network has an encoder-fuser-decoder architecture.
-- Encoder: Resnet18
-- Fuser: Transformer decoder
-- Decoder: UNet
 
-🔔 Colab Tutorial for inference: click [here](https://colab.research.google.com/github/yankuai/FaceGeo/blob/main/FaceGeo-reconstruct-face-geometry-with-cross-attention.ipynb).
+The model employs an encoder-fuser-decoder architecture, consisting of the following components:
+- **Encoder**: ResNet18
+- **Fuser**: Transformer Decoder
+- **Decoder**: UNet
+
+🔔 **Colab Tutorial for inference**: click [here](https://colab.research.google.com/github/yankuai/FaceGeo/blob/main/FaceGeo-reconstruct-face-geometry-with-cross-attention.ipynb).
 
 ### Environment
 ```sh
@@ -22,9 +27,7 @@ cd FaceGeo
 pip install -r requirements.txt
 ```
 ### Inference
-Inference on a folder of multiple indivisuals' face images.
-
-- The data should be arranged into the following structure.
+You can perform inference on a folder containing multiple individuals' face images. The data should be organized in the following structure:
 
 ```sh
 input/
@@ -39,11 +42,17 @@ input/
       └── view_k.png
 ```
 
-- Download the pre-trained [weights](https://github.com/yankuai/FaceGeo/releases/download/v1.0.0/model.pt) into base folder and rename it as `model.pt`.
+**Steps to Run Inference:**
 
-- Then modify the `home_dir`, `out_dir`, `data_dir`, and `checkpoint` in the config file `conf/inference.yaml`.
+1. Download Pre-trained Weights: Download the pre-trained [weights](https://github.com/yankuai/FaceGeo/releases/download/v1.0.0/model.pt) into the base folder and the file to `model.pt`.
 
-- Run the command:
+2. Modify Configuration File: Update the following fields in the configuration file `conf/inference.yaml`:
+- `home_dir`
+- `out_dir`
+- `data_dir`
+- `checkpoint`
+
+3. Run Inference Command:
 
 ```sh
 python inference.py conf/inference.yaml
