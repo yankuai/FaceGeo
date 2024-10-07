@@ -1,5 +1,5 @@
 ## FaceGeo
-👶 This project builds a model to reconstruct an indivisual's face geometry given 6 portrait images captured from diffirent views.
+👶 This project builds a model to reconstruct an indivisual's face geometry given 6 portrait images captured from different views.
 - Input: 6 multi-view images of the face. 
 
     💁 If you have less than 6 images, the model can also work, but the accuracy can be low.
@@ -13,7 +13,7 @@
 - Fuser: Transformer decoder
 - Decoder: UNet
 
-🔔 We only release the code for inference. Colab Tutorial: click [here](https://colab.research.google.com/github/yankuai/FaceGeo/blob/main/FaceGeo-reconstruct-face-geometry-with-cross-attention.ipynb).
+🔔 Colab Tutorial for inference: click [here](https://colab.research.google.com/github/yankuai/FaceGeo/blob/main/FaceGeo-reconstruct-face-geometry-with-cross-attention.ipynb).
 
 ### Environment
 ```sh
