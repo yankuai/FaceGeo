@@ -1,0 +1,23 @@
+device: cuda
+home_dir: "/content/FaceGeo"
+out_dir: "/content/output"
+
+augment:
+  normalize:
+    mean: [ 0.485, 0.456, 0.406 ]
+    std: [ 0.229, 0.224, 0.225 ]
+  resize:
+    size: 256
+
+data:
+  data_dir: "/content/FaceGeo/input"
+  batch_size: 2
+  views: 6
+
+model:
+  checkpoint: "/content/FaceGeo/model.pt"
+  encoder:
+    feat_dim: 128
+    output_size: 16
+  attention:
+    layer: 6
